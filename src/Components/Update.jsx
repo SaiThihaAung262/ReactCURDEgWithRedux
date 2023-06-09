@@ -13,10 +13,12 @@ function Update(){
     const {id} = useParams()
     const users = useSelector((state) => state.users)
     const existingUser = users.filter(user => user.id == id);
-    const {name, email} = existingUser[0]
+    const {name, phone_no, email, address} = existingUser[0]
 
     const [updateName, setName] = useState(name)
+    const [updatePhoneNo, setPhoneNo] = useState(phone_no)
     const [updateEmail, setEmail] = useState(email)
+    const [updateAddress, setAddress] = useState(address)
 
     const handleUpdate = (event) => {
         event.preventDefault()
@@ -32,7 +34,9 @@ function Update(){
         dispatch(updateUser({
             id: id,
             name: updateName,
-            email: updateEmail
+            phone_no: updatePhoneNo,
+            email: updateEmail,
+            address: updateAddress
         }))
 
         navigate("/")
@@ -40,7 +44,7 @@ function Update(){
 
     const Alert = showAlert && 
             <div className="alert alert-danger" role="alert">
-                Name or Email is required!
+                Please fill all fields!
             </div>;
     return(
         <div className="d-flex flex-column w-100 vh-100 justify-content-center align-items-center">
@@ -57,8 +61,16 @@ function Update(){
                         <input type="text" name="name" className="form-control" placeholder="Please enter name" value={updateName} onChange={e => setName(e.target.value)} />
                     </div>
                     <div>
+                        <label htmlFor="phone_no">Phone No.</label>
+                        <input type="text" name="phone_no" className="form-control" placeholder="Please enter phone number" value={updatePhoneNo} onChange={e => setPhoneNo(e.target.value)} />
+                    </div>
+                    <div>
                         <label htmlFor="email">Email</label>
-                        <input type="text" name="email" className="form-control" placeholder="Please enter email" value={updateEmail} onChange={e => setEmail(e.target.value)} />
+                        <input type="email" name="email" className="form-control" placeholder="Please enter email" value={updateEmail} onChange={e => setEmail(e.target.value)} />
+                    </div>
+                    <div>
+                        <label htmlFor="address">Address</label>
+                        <input type="text" name="address" className="form-control" placeholder="Please enter address" value={updateAddress} onChange={e => setAddress(e.target.value)} />
                     </div>
                     <button className="btn btn-info mt-3">Update</button>
                 </form>

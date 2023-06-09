@@ -20,7 +20,7 @@ function Home() {
 
     return (
         <div className="container">
-            <h2>CRUD Example App</h2>
+            <h2 className="mt-3">CRUD Example App</h2>
             <Link to="/create">
                 <button className="btn btn-primary my-3">Create + </button>
             </Link>
@@ -29,7 +29,9 @@ function Home() {
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Phone No.</th>
                         <th>Email</th>
+                        <th>Address</th>
                         <th>Operate</th>
                     </tr>
                 </thead>
@@ -39,7 +41,9 @@ function Home() {
                             <tr key={index}>
                                 <td>{user.id}</td>
                                 <td>{user.name}</td>
+                                <td>{user.phone_no}</td>
                                 <td>{user.email}</td>
+                                <td>{user.address}</td>
                                 <td>
                                     <Link to={`/edit/${user.id}`} className="btn btn-warning">Edit</Link>
                                     <button onClick={() => handleDelete(user.id)} className="btn btn-danger ms-2">Delete</button>

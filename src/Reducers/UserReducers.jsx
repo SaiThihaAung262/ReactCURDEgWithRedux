@@ -10,11 +10,13 @@ const userSlice = createSlice({
         },
 
         updateUser: (state, action) => {
-            const {id, name, email} = action.payload
+            const {id, name, phone_no, email, address} = action.payload
             const updateUser = state.find(user => user.id == id)
             if(updateUser){
                 updateUser.name = name
+                updateUser.phone_no = phone_no
                 updateUser.email = email
+                updateUser.address = address
             }
         },
 
