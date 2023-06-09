@@ -4,11 +4,13 @@ const userSlice = createSlice({
     name: "users",
     initialState: userList,
     reducers: {
+        //Add user function
         addUser: (state, action) => {
             console.log(action);
             state.push(action.payload)
         },
 
+        //Update user fucntion
         updateUser: (state, action) => {
             const {id, name, phone_no, email, address} = action.payload
             const updateUser = state.find(user => user.id == id)
@@ -20,6 +22,7 @@ const userSlice = createSlice({
             }
         },
 
+        //Delete user function
         deleteUser: (state, action) => {
             const {id} = action.payload
             const deleteUser = state.find(user => user.id == id)

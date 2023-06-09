@@ -6,7 +6,7 @@ import { deleteUser } from "../Reducers/userReducers";
 
 function Home() {
     const dispatch = useDispatch()
-    const users = useSelector((state) => state.users)
+    const users = useSelector((state) => state.users)//Get users from redux store
     // console.log("Here is users...........", users)
 
     const handleDelete = (id) => {
@@ -15,7 +15,6 @@ function Home() {
             id: id
         }))
         }
-        
     }
 
     return (
